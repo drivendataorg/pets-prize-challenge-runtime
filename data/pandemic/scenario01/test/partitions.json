@@ -1,0 +1,20 @@
+{
+    "client01": {
+        "person_data_path": "va_person.csv",
+        "household_data_path": "va_household.csv",
+        "residence_location_data_path": "va_residence_locations.csv",
+        "activity_location_data_path": "va_activity_locations.csv",
+        "activity_location_assignment_data_path": "va_activity_location_assignment.csv",
+        "population_network_data_path": "va_population_network.csv",
+        "disease_outcome_data_path": "va_disease_outcome_training.csv"
+    },
+    "client02": {
+        "person_data_path": "va_person.csv",
+        "household_data_path": "va_household.csv",
+        "residence_location_data_path": "va_residence_locations.csv",
+        "activity_location_data_path": "va_activity_locations.csv",
+        "activity_location_assignment_data_path": "va_activity_location_assignment.csv",
+        "population_network_data_path": "va_population_network.csv",
+        "disease_outcome_data_path": "va_disease_outcome_training.csv"
+    }
+}

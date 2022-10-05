@@ -1,0 +1,4 @@
+{
+    "swift_data_path": "swift_transaction_test_dataset_sample_partition.csv",
+    "bank_data_path": "bank_dataset_sample_partition_0.csv"
+}
