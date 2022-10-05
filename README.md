@@ -1,8 +1,8 @@
-# PETs Prize Challenge Runtime
+# U.S. PETs Prize Challenge Runtime
 
 **If you haven't already done so, please start by reading the documentation on the challenge websites: [Track A: Financial Crime](https://www.drivendata.org/competitions/105/nist-federated-learning-2-financial-crime-federated/page/590/), [Track B: Pandemic Forecasting](https://www.drivendata.org/competitions/103/nist-federated-learning-2-pandemic-forecasting-federated/page/583/)**
 
-Welcome to the runtime repository for the PETs Prize Challenge! This repository contains the source code for the runtime container image used to run code submissions in Phase 2 of the challenge.
+Welcome to the runtime repository for the U.S. PETs Prize Challenge! This repository contains the source code for the runtime container image used to run code submissions in Phase 2 of the challenge.
 
 This repository has three primary uses for competitors:
 
