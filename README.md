@@ -7,9 +7,9 @@
 **If you haven't already done so, please start by reading the documentation on the challenge websites:**
 
 - [U.S. | Track A: Financial Crime](https://www.drivendata.org/competitions/105/nist-federated-learning-2-financial-crime-federated/page/590/)
-- [U.S. | Track B: Pandemic Forecasting](https://www.drivendata.org/competitions/103/nist-federated-learning-2-pandemic-forecasting-federated/page/583/)**
+- [U.S. | Track B: Pandemic Forecasting](https://www.drivendata.org/competitions/103/nist-federated-learning-2-pandemic-forecasting-federated/page/583/)
 - [U.K. | Track A: Financial Crime](https://www.drivendata.org/competitions/140/uk-federated-learning-2-financial-crime-federated/page/637/)
-- [U.K. | Track B: Pandemic Forecasting](https://www.drivendata.org/competitions/141/uk-federated-learning-2-pandemic-forecasting-federated/page/642/)**
+- [U.K. | Track B: Pandemic Forecasting](https://www.drivendata.org/competitions/141/uk-federated-learning-2-pandemic-forecasting-federated/page/642/)
 
 Welcome to the runtime repository for the PETs Prize Challenge! This repository contains the source code for the runtime container image used to run code submissions in Phase 2 of the challenge.
 
