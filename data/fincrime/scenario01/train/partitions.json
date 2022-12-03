@@ -1,8 +1,11 @@
 {
     "swift": {
-        "data_path": "swift_transaction_train_dataset_sample_partition.csv"
+        "data_path": "swift_transaction_train_dataset.csv"
     },
     "bank01": {
-        "data_path": "bank_dataset_sample_partition_0.csv"
+        "data_path": "bank_dataset.csv"
+    },
+    "bank02": {
+        "data_path": "bank_dataset.csv"
     }
 }

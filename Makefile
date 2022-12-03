@@ -22,10 +22,10 @@ endif
 TAG = ${CPU_OR_GPU}-latest
 LOCAL_TAG = ${CPU_OR_GPU}-local
 
-REPO = drivendata/pets-prize-federated-runtime
+REPO = petsprize-competition
 REGISTRY_IMAGE = petsprize.azurecr.io/${REPO}:${TAG}
 LOCAL_IMAGE = ${REPO}:${LOCAL_TAG}
-CONTAINER_NAME = pets-prize
+CONTAINER_NAME = petsprize
 
 # if not TTY (for example GithubActions CI) no interactive tty commands for docker
 ifneq (true, ${GITHUB_ACTIONS_NO_TTY})
@@ -127,6 +127,7 @@ endif
 		${TTY_ARGS} \
 		${GPU_ARGS} \
 		${NETWORK_ARGS} \
+		--env SUBMISSION_TRACK=${SUBMISSION_TRACK} \
 		--network none \
 		--mount type=bind,source="$(shell pwd)"/data/${SUBMISSION_TRACK},target=/code_execution/data,readonly \
 		--mount type=bind,source="$(shell pwd)"/submission,target=/code_execution/submission \

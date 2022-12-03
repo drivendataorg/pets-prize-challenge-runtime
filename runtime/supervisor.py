@@ -2,6 +2,7 @@ from datetime import datetime
 import functools
 import inspect
 import json
+import os
 from pathlib import Path
 from typing import Callable, Dict, List, Optional, Tuple, Union
 
@@ -134,11 +135,15 @@ class FederatedSupervisor:
     def get_predictions_format_path(self, cid: str):
         if self.base_predictions_dir is None:
             raise Exception("Shouldn't get predictions format path if not test")
+        if os.environ.get("SUBMISSION_TRACK") == "fincrime" and cid != "swift":
+            return None
         return self.get_client_data_dir(cid) / f"predictions_format.csv"
 
     def get_predictions_dest_path(self, cid: str):
         if self.base_predictions_dir is None:
             raise Exception("Shouldn't get predictions dest path if not test")
+        if os.environ.get("SUBMISSION_TRACK") == "fincrime" and cid != "swift":
+            return None
         return self.base_predictions_dir / f"{cid}.csv"
 
 
@@ -199,7 +204,7 @@ def wrap_client_method(ins_proto_fn, res_proto_fn):
     return decorator
 
 
-class BaseFederatedWrapperClient(fl.client.Client):
+class FederatedWrapperClient(fl.client.Client):
     """Wrapper around user-submitted solution client that implements standardized
     logging and communications capture.
     """
@@ -250,19 +255,17 @@ class BaseFederatedWrapperClient(fl.client.Client):
         pass
 
     @wrap_client_method(
-        ins_proto_fn=fl.common.serde.evaluate_ins_to_proto,
-        res_proto_fn=fl.common.serde.evaluate_res_to_proto,
-    )
-    def evaluate(self, ins: EvaluateIns) -> EvaluateRes:
-        pass
-
-
-class TrainFederatedWrapperClient(BaseFederatedWrapperClient):
-    @wrap_client_method(
         ins_proto_fn=fl.common.serde.fit_ins_to_proto,
         res_proto_fn=fl.common.serde.fit_res_to_proto,
     )
     def fit(self, ints: FitIns) -> FitRes:
+        pass
+
+    @wrap_client_method(
+        ins_proto_fn=fl.common.serde.evaluate_ins_to_proto,
+        res_proto_fn=fl.common.serde.evaluate_res_to_proto,
+    )
+    def evaluate(self, ins: EvaluateIns) -> EvaluateRes:
         pass
 
 
@@ -282,7 +285,7 @@ def wrap_train_client_factory(
             **supervisor.get_data_paths(cid),
             client_dir=supervisor.get_client_state_dir(cid),
         )
-        return TrainFederatedWrapperClient(
+        return FederatedWrapperClient(
             cid=cid,
             solution_client=fl.client.to_client(solution_client),
             supervisor=supervisor,
@@ -290,21 +293,6 @@ def wrap_train_client_factory(
         )
 
     return wrapped_client_factory
-
-
-class TestFederatedWrapperClient(BaseFederatedWrapperClient):
-    """Wrapper around user-submitted solution client that implements standardized
-    logging and communications capture.
-    """
-
-    def fit(self, ins: FitIns) -> FitRes:
-        supervisor_logger = self.supervisor_logger.bind(method="fit")
-        msg = (
-            f"Client {self.cid}: fit start — "
-            "Fit method should not be used during test simulation."
-        )
-        supervisor_logger.error(msg)
-        raise Exception(msg)
 
 
 def wrap_test_client_factory(
@@ -325,7 +313,7 @@ def wrap_test_client_factory(
             preds_format_path=supervisor.get_predictions_format_path(cid),
             preds_dest_path=supervisor.get_predictions_dest_path(cid),
         )
-        return TestFederatedWrapperClient(
+        return FederatedWrapperClient(
             cid=cid,
             solution_client=fl.client.to_client(solution_client),
             supervisor=supervisor,
@@ -352,7 +340,7 @@ def wrap_strategy_method(method: Callable):
     return wrapped_method
 
 
-class TrainFederatedWrapperStrategy(fl.server.strategy.Strategy):
+class FederatedWrapperStrategy(fl.server.strategy.Strategy):
     """Wrapper around user-submitted solution strategy that implements standardized
     logging and communications capture.
     """
@@ -425,38 +413,6 @@ class TrainFederatedWrapperStrategy(fl.server.strategy.Strategy):
         pass
 
 
-class TestFederatedWrapperStrategy(TrainFederatedWrapperStrategy):
-    """Wrapper around user-submitted solution strategy that implements standardized
-    logging and communications capture.
-    """
-
-    def configure_fit(
-        self, server_round: int, parameters: Parameters, client_manager: ClientManager
-    ) -> List[Tuple[ClientProxy, FitIns]]:
-        fit_config = super().configure_fit(
-            server_round=server_round,
-            parameters=parameters,
-            client_manager=ClientManager,
-        )
-        if len(fit_config) > 0:
-            raise Exception(
-                "configure_fit should not return any fit instructions during test stage"
-            )
-        return fit_config
-
-    def aggregate_fit(
-        self,
-        server_round: int,
-        results: List[Tuple[ClientProxy, FitRes]],
-        failures: List[Union[Tuple[ClientProxy, FitRes], BaseException]],
-    ) -> Tuple[Optional[Parameters], Dict[str, Scalar]]:
-        if len(results) + len(failures) > 0:
-            raise Exception(
-                "aggregate_fit should not receive any results or failures during "
-                "test stage"
-            )
-
-
 class CentralizedSupervisor:
     """Class that does path bookkeeping for centralized evaluation."""
 
@@ -494,9 +450,9 @@ class CentralizedSupervisor:
         return {k: self.stage_data_dir / v for k, v in self.data_config.items()}
 
     def get_predictions_format_path(self):
-        return self.stage_data_dir / f"predictions_format.csv"
+        return self.stage_data_dir / "predictions_format.csv"
 
     def get_predictions_dest_path(self):
         if self.base_predictions_dir is None:
             raise Exception("Shouldn't get predictions dest path if not test")
-        return self.base_predictions_dir / f"predictions.csv"
+        return self.base_predictions_dir / "predictions.csv"

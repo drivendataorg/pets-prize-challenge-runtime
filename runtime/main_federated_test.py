@@ -8,7 +8,7 @@ import flwr as fl
 from loguru import logger
 from supervisor import (
     FederatedSupervisor,
-    TestFederatedWrapperStrategy,
+    FederatedWrapperStrategy,
     wrap_test_client_factory,
 )
 
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     solution_strategy, num_rounds = test_strategy_factory(
         server_dir=supervisor.get_server_state_dir()
     )
-    wrapped_strategy = TestFederatedWrapperStrategy(
+    wrapped_strategy = FederatedWrapperStrategy(
         solution_strategy=solution_strategy, supervisor=supervisor
     )
     server_config = fl.server.ServerConfig(num_rounds=num_rounds)
@@ -34,7 +34,7 @@ if __name__ == "__main__":
         client_fn=wrapped_client_factory,
         clients_ids=supervisor.get_client_ids(),
         client_resources={
-            "num_cpus": os.cpu_count(),
+            "num_cpus": os.cpu_count() - 1,
         },
         config=server_config,
         strategy=wrapped_strategy,
@@ -48,4 +48,4 @@ if __name__ == "__main__":
     logger.info("Validating that all required predictions files exist...")
     for cid in supervisor.get_client_ids():
         if supervisor.get_predictions_dest_path(cid=cid):
-            assert supervisor.get_predictions_dest_path(cid=cid).exists()
+            assert supervisor.get_predictions_dest_path(cid=cid).exists(), cid
