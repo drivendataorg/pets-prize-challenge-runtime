@@ -1,29 +1,82 @@
 {
     "client01": {
-        "person_data_path": "va_person.csv.gz",
-        "household_data_path": "va_household.csv.gz",
-        "residence_location_data_path": "va_residence_locations.csv.gz",
-        "activity_location_data_path": "va_activity_locations.csv.gz",
-        "activity_location_assignment_data_path": "va_activity_location_assignment.csv.gz",
-        "population_network_data_path": "va_population_network.csv.gz",
-        "disease_outcome_data_path": "va_disease_outcome_training.csv.gz"
+        "person_data_path": "va_person.csv",
+        "household_data_path": "va_household.csv",
+        "residence_location_data_path": "va_residence_locations.csv",
+        "activity_location_data_path": "va_activity_locations.csv",
+        "activity_location_assignment_data_path": "va_activity_location_assignment.csv",
+        "population_network_data_path": "va_population_network.csv",
+        "disease_outcome_data_path": "va_disease_outcome_training.csv",
+        "prepared_data_path": "total_patients_prepared_scenario.csv"
     },
     "client02": {
-        "person_data_path": "va_person.csv.gz",
-        "household_data_path": "va_household.csv.gz",
-        "residence_location_data_path": "va_residence_locations.csv.gz",
-        "activity_location_data_path": "va_activity_locations.csv.gz",
-        "activity_location_assignment_data_path": "va_activity_location_assignment.csv.gz",
-        "population_network_data_path": "va_population_network.csv.gz",
-        "disease_outcome_data_path": "va_disease_outcome_training.csv.gz"
+        "person_data_path": "va_person.csv",
+        "household_data_path": "va_household.csv",
+        "residence_location_data_path": "va_residence_locations.csv",
+        "activity_location_data_path": "va_activity_locations.csv",
+        "activity_location_assignment_data_path": "va_activity_location_assignment.csv",
+        "population_network_data_path": "va_population_network.csv",
+        "disease_outcome_data_path": "va_disease_outcome_training.csv",
+        "prepared_data_path": "total_patients_prepared_scenario.csv"
     },
     "client03": {
-        "person_data_path": "va_person.csv.gz",
-        "household_data_path": "va_household.csv.gz",
-        "residence_location_data_path": "va_residence_locations.csv.gz",
-        "activity_location_data_path": "va_activity_locations.csv.gz",
-        "activity_location_assignment_data_path": "va_activity_location_assignment.csv.gz",
-        "population_network_data_path": "va_population_network.csv.gz",
-        "disease_outcome_data_path": "va_disease_outcome_training.csv.gz"
+        "person_data_path": "va_person.csv",
+        "household_data_path": "va_household.csv",
+        "residence_location_data_path": "va_residence_locations.csv",
+        "activity_location_data_path": "va_activity_locations.csv",
+        "activity_location_assignment_data_path": "va_activity_location_assignment.csv",
+        "population_network_data_path": "va_population_network.csv",
+        "disease_outcome_data_path": "va_disease_outcome_training.csv",
+        "prepared_data_path": "total_patients_prepared_scenario.csv"
+    },
+    "client04": {
+        "person_data_path": "va_person.csv",
+        "household_data_path": "va_household.csv",
+        "residence_location_data_path": "va_residence_locations.csv",
+        "activity_location_data_path": "va_activity_locations.csv",
+        "activity_location_assignment_data_path": "va_activity_location_assignment.csv",
+        "population_network_data_path": "va_population_network.csv",
+        "disease_outcome_data_path": "va_disease_outcome_training.csv",
+        "prepared_data_path": "total_patients_prepared_scenario.csv"
+    },
+    "client05": {
+        "person_data_path": "va_person.csv",
+        "household_data_path": "va_household.csv",
+        "residence_location_data_path": "va_residence_locations.csv",
+        "activity_location_data_path": "va_activity_locations.csv",
+        "activity_location_assignment_data_path": "va_activity_location_assignment.csv",
+        "population_network_data_path": "va_population_network.csv",
+        "disease_outcome_data_path": "va_disease_outcome_training.csv",
+        "prepared_data_path": "total_patients_prepared_scenario.csv"
+    },
+    "client06": {
+        "person_data_path": "va_person.csv",
+        "household_data_path": "va_household.csv",
+        "residence_location_data_path": "va_residence_locations.csv",
+        "activity_location_data_path": "va_activity_locations.csv",
+        "activity_location_assignment_data_path": "va_activity_location_assignment.csv",
+        "population_network_data_path": "va_population_network.csv",
+        "disease_outcome_data_path": "va_disease_outcome_training.csv",
+        "prepared_data_path": "total_patients_prepared_scenario.csv"
+    },
+    "client07": {
+        "person_data_path": "va_person.csv",
+        "household_data_path": "va_household.csv",
+        "residence_location_data_path": "va_residence_locations.csv",
+        "activity_location_data_path": "va_activity_locations.csv",
+        "activity_location_assignment_data_path": "va_activity_location_assignment.csv",
+        "population_network_data_path": "va_population_network.csv",
+        "disease_outcome_data_path": "va_disease_outcome_training.csv",
+        "prepared_data_path": "total_patients_prepared_scenario.csv"
+    },
+    "client08": {
+        "person_data_path": "va_person.csv",
+        "household_data_path": "va_household.csv",
+        "residence_location_data_path": "va_residence_locations.csv",
+        "activity_location_data_path": "va_activity_locations.csv",
+        "activity_location_assignment_data_path": "va_activity_location_assignment.csv",
+        "population_network_data_path": "va_population_network.csv",
+        "disease_outcome_data_path": "va_disease_outcome_training.csv",
+        "prepared_data_path": "total_patients_prepared_scenario.csv"
     }
 }
