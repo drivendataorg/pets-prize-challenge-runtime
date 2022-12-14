@@ -80,7 +80,6 @@ endif
 
 ## Pulls the official container from Azure Container Registry
 pull:
-	echo "Not yet available" && exit 1
 	docker pull ${REGISTRY_IMAGE}
 
 ## Creates a submission/submission.zip file from the source code in examples_src
