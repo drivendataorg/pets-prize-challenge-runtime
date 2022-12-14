@@ -16,7 +16,7 @@ Welcome to the runtime repository for the PETs Prize Challenge! This repository 
 
 This repository has three primary uses for competitors:
 
-1. 💡 **Example solutions**: You can find simple examples that demonstrate how to write code that works with the evaluation. **Coming soon.**
+1. 💡 **Example solutions**: You can find simple examples that demonstrate how to write code that works with the evaluation.
     - [Track A: Financial Crime Example](./examples_src/fincrime/)
     - [Track B: Pandemic Forecasting Example](./examples_src/pandemic/)
 2. 🔧 **Test your submission**: Test your submission with a locally running version of the container to discover errors before submitting to the competition site.
