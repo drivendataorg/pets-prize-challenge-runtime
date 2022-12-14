@@ -61,8 +61,9 @@ test-container: build _submission_write_perms
 	docker run \
 		${TTY_ARGS} \
 		--mount type=bind,source="$(shell pwd)"/runtime/tests,target=/tests,readonly \
+		--entrypoint /bin/bash \
 		${LOCAL_IMAGE} \
-		/bin/bash -c "conda run --no-capture-output -n condaenv pytest tests/test_packages.py"
+		-c "conda run --no-capture-output -n condaenv python -m pytest tests"
 
 ## Start your locally built container and open a bash shell within the running container; same as submission setup except has network access
 interact-container: build _submission_write_perms
@@ -74,8 +75,8 @@ endif
 		--mount type=bind,source="$(shell pwd)"/submission,target=/code_execution/submission \
 		--shm-size 8g \
 		-it \
-		${LOCAL_IMAGE} \
-		/bin/bash
+		--entrypoint /bin/bash \
+		${LOCAL_IMAGE}
 
 ## Pulls the official container from Azure Container Registry
 pull:

@@ -70,7 +70,7 @@ RUN mamba env create --name ${CONDA_ENV} -f /home/${RUNTIME_USER}/environment.ym
 # Copy run script into working dir and set it as the working doie
 WORKDIR /code_execution
 RUN mkdir -p data predictions submission /home/${RUNTIME_USER}/.config/procps
-#COPY --chown=appuser:appuser tests /code_execution/tests
+COPY --chown=appuser:appuser tests /code_execution/tests
 COPY --chown=appuser:appuser supervisor.py /code_execution/supervisor.py
 COPY --chown=appuser:appuser main_federated_train.py /code_execution/main_federated_train.py
 COPY --chown=appuser:appuser main_federated_test.py /code_execution/main_federated_test.py
