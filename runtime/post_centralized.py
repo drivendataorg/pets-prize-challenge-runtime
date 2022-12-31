@@ -1,11 +1,15 @@
 import json
 from pathlib import Path
+import shutil
 
 from loguru import logger
 import pandas as pd
 
 from supervisor import CentralizedSupervisor
 
+
+INPUT_FILE = Path("/code_execution/submission/predictions/centralized/predictions.csv")
+OUTPUT_FILE = Path("/code_execution/submission/scoring_payload/predictions.csv")
 
 if __name__ == "__main__":
     # Initialize metrics dict
@@ -31,4 +35,10 @@ if __name__ == "__main__":
     logger.info(f"Metrics summary:\n{json.dumps(metrics, indent=2)}")
     with Path("submission/metrics.json").open("w") as fp:
         json.dump(metrics, fp, indent=2)
+
+    # Copy predictions file
+    logger.info("Collating test predictions...")
+    OUTPUT_FILE.parent.mkdir(exist_ok=True, parents=True)
+    shutil.copy(INPUT_FILE, OUTPUT_FILE)
+
     logger.info("Post-run complete.")

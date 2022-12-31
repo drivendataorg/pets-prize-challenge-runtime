@@ -58,6 +58,10 @@ if __name__ == "__main__":
         metrics[f"network_file_volume_{scenario}"] = num_files
         metrics[f"network_disk_volume_{scenario}"] = total_disk
 
+    logger.info(f"Metrics summary:\n{json.dumps(metrics, indent=2)}")
+    with Path("submission/metrics.json").open("w") as fp:
+        json.dump(metrics, fp, indent=2)
+
     # Create predictions archive
     logger.info("Creating predictions tar file...")
     with tarfile.open(OUTPUT_TAR, "w:gz") as tar:
@@ -65,7 +69,4 @@ if __name__ == "__main__":
             preds_file = OUTPUT_DIR / f"{scenario}_predictions.csv"
             tar.add(preds_file, arcname=preds_file.name)
 
-    logger.info(f"Metrics summary:\n{json.dumps(metrics, indent=2)}")
-    with Path("submission/metrics.json").open("w") as fp:
-        json.dump(metrics, fp, indent=2)
     logger.info("Post-run complete.")
