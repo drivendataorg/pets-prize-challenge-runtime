@@ -52,21 +52,21 @@ class SirModel:
             disease_outcome_df (pd.DataFrame): Disease outcome time series dataframe
             lookahead (int): Number of days in the future to predict an infection event
         """
-        disease_outcome_df = disease_outcome_df.copy()
-
-        def identify_infection_event(df: pd.DataFrame):
-            prev_state = df["state"].shift(1)
-            return (df["state"] == "I") & (prev_state == "S")
+        from loguru import logger
 
         # Get "infection events" for when individuals transition from S to I
-        disease_outcome_df["infection_event"] = (
-            disease_outcome_df.groupby("pid", as_index=False)
-            .apply(identify_infection_event)
-            .reset_index()
-            .set_index("level_1")["state"]
+        # This should be the first I state in time, generally
+        # Case where individual is I on first day doesn't matter, because it won't get
+        # counted in any lookahead windows later
+        logger.info("Identifying infection events...")
+        infection_events_df = (
+            disease_outcome_df[disease_outcome_df["state"] == "I"]
+            .sort_values(["day", "pid"])
+            .drop_duplicates("pid", keep="first")
         )
 
         # Get S, I, R counts per day
+        logger.info("Counting disease states per day...")
         day_df = disease_outcome_df.groupby("day").agg(
             S=("state", lambda ser: (ser == "S").sum()),
             I=("state", lambda ser: (ser == "I").sum()),
@@ -74,13 +74,14 @@ class SirModel:
         )
 
         def count_infection_events(day: int):
-            window = disease_outcome_df[
-                (day < disease_outcome_df["day"])
-                & (disease_outcome_df["day"] <= day + self.lookahead)
+            window_events_df = infection_events_df[
+                (day < infection_events_df["day"])
+                & (infection_events_df["day"] <= day + self.lookahead)
             ]
-            return window["infection_event"].sum()
+            return window_events_df.shape[0]
 
         # Get count of new infections over the lookahead period
+        logger.info("Counting infection events in lookahead window...")
         day_df["next_infections"] = day_df.index.map(count_infection_events)
 
         day_df = day_df.iloc[: -self.lookahead]

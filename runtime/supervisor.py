@@ -70,8 +70,9 @@ class FederatedSupervisor:
 
     base_storage_dir = Path("/code_execution/submission")
 
-    def __init__(self, partition_config_path: Path) -> None:
+    def __init__(self, partition_config_path: Union[str, Path]) -> None:
         # Set up paths
+        partition_config_path = Path(partition_config_path)
         with partition_config_path.open("r") as fp:
             self.partition_config = json.load(fp)
         self.scenario_data_dir = partition_config_path.parent

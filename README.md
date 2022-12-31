@@ -216,7 +216,7 @@ If you want to try using the GPU image on your machine but you don't have a GPU 
 
 If you want to use a package that is not in the environment, you are welcome to make a pull request to this repository. If you're new to the GitHub contribution workflow, check out [this guide by GitHub](https://docs.github.com/en/get-started/quickstart/contributing-to-projects). The runtime manages dependencies using [conda](https://docs.conda.io/en/latest/) environments. [Here is a good general guide](https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533) to conda environments. The official runtime uses **Python 3.9.13** environments.
 
-**Note: Since package installations need to be approved, be sure to submit any PRs requesting installation by January 4, 2023 to ensure they are incorporated in time for you to make a successful submission.**
+**Note: Since package installations need to be approved, be sure to submit any PRs requesting installation by January 11, 2023 to ensure they are incorporated in time for you to make a successful submission.**
 
 To submit a pull request for a new package:
 

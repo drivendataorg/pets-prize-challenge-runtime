@@ -74,8 +74,11 @@ COPY --chown=appuser:appuser tests /code_execution/tests
 COPY --chown=appuser:appuser supervisor.py /code_execution/supervisor.py
 COPY --chown=appuser:appuser main_federated_train.py /code_execution/main_federated_train.py
 COPY --chown=appuser:appuser main_federated_test.py /code_execution/main_federated_test.py
+COPY --chown=appuser:appuser post_federated.py /code_execution/post_federated.py
 COPY --chown=appuser:appuser main_centralized_train.py /code_execution/main_centralized_train.py
 COPY --chown=appuser:appuser main_centralized_test.py /code_execution/main_centralized_test.py
+COPY --chown=appuser:appuser post_centralized.py /code_execution/post_centralized.py
 COPY --chown=appuser:appuser entrypoint.sh /code_execution/entrypoint.sh
 COPY --chown=appuser:appuser toprc /home/${RUNTIME_USER}/.config/procps/toprc
+
 ENTRYPOINT ["/bin/bash", "/code_execution/entrypoint.sh"]

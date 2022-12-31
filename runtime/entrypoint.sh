@@ -77,9 +77,7 @@ main () {
         echo "================ START CENTRALIZED TEST ================"
         monitor conda run --no-capture-output -n condaenv python main_centralized_test.py
         echo "================ END CENTRALIZED TEST ================"
-
     elif [ $submission_type = federated ]; then
-
         while read scenario; do
             echo "================ START FEDERATED TRAIN FOR $scenario ================"
             monitor conda run --no-capture-output -n condaenv python main_federated_train.py /code_execution/data/$scenario/train/partitions.json
@@ -88,18 +86,24 @@ main () {
             monitor conda run --no-capture-output -n condaenv python main_federated_test.py /code_execution/data/$scenario/test/partitions.json
             echo "================ END FEDERATED TEST FOR $scenario ================"
         done </code_execution/data/scenarios.txt
-
     fi
 
+    gzip process_metrics.log
     sadf system_metrics.sar -d -- -u | gzip > cpu_metrics.csv.gz
     sadf system_metrics.sar -d -- -r | gzip > memory_metrics.csv.gz
     gzip system_metrics.sar
-    mv cpu_metrics.csv.gz memory_metrics.csv.gz system_metrics.sar.gz submission
+    mv process_metrics.log.gz cpu_metrics.csv.gz memory_metrics.csv.gz system_metrics.sar.gz submission
 
-    if [[ -f gpu_metrics.log ]]
-    then
-	gzip gpu_metrics.log
-	mv gpu_metrics.log.gz submission
+    if [[ -f gpu_metrics.log ]]; then
+        gzip gpu_metrics.log
+        mv gpu_metrics.log.gz submission
+    fi
+
+    # Post-run processing
+    if [[ $submission_type = centralized ]]; then
+        conda run --no-capture-output -n condaenv python post_centralized.py
+    elif [ $submission_type = federated ]; then
+        conda run --no-capture-output -n condaenv python post_federated.py
     fi
 
     echo "================ END ================"

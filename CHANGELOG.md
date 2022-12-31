@@ -1,5 +1,10 @@
 # Changelog
 
+## 2022-12-31
+
+- Added post-run steps to the evaluation that collate predictions and some key runtime metrics.
+- Updated the pandemic forecasting example to compute more efficiently. ([`examples_src/pandemic`](./examples_src/pandemic/))
+
 ## 2022-12-02
 
 - Bumped the version of Flower in runtime image to 1.1.0. This includes improvements such as better error logging when running simulated federated learning. See [Flower changelog](https://flower.dev/docs/changelog.html#v1-1-0-2022-10-31) for full details.
