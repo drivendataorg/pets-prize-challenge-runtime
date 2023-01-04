@@ -1,5 +1,11 @@
 # Changelog
 
+## 2022-01-04
+
+- Fixed CUDA issues in the GPU-based image.
+- Updated `make pack-example` and `make pack-submission` to create the `submission/` directory if it does not already exist.
+- Updated the financial crime example to handle an edge case when a bank partition has no receiving accounts. ([`examples_src/fincrime`](./examples_src/fincrime/))
+
 ## 2022-12-31
 
 - Added post-run steps to the evaluation that collate predictions and some key runtime metrics.
