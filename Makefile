@@ -92,6 +92,7 @@ endif
 ifneq (,$(wildcard ./submission/submission.zip))
 	$(error You already have a submission/submission.zip file. Rename or remove that file (e.g., rm submission/submission.zip).)
 endif
+	mkdir -p submission/
 	cd examples_src/${SUBMISSION_TRACK}; zip -r ../../submission/submission.zip ./*
 
 ## Creates a submission/submission.zip file from the source code in submission_src
@@ -103,6 +104,7 @@ endif
 ifneq (,$(wildcard ./submission/submission.zip))
 	$(error You already have a submission/submission.zip file. Rename or remove that file (e.g., rm submission/submission.zip).)
 endif
+	mkdir -p submission/
 	cd submission_src/${SUBMISSION_TRACK}; zip -r ../../submission/submission.zip ./*
 
 
