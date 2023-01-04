@@ -71,6 +71,7 @@ ifeq (${SUBMISSION_TRACK},)
 	$(error Specify the SUBMISSION_TRACK=fincrime or pandemic)
 endif
 	docker run \
+		${GPU_ARGS} \
 		--mount type=bind,source="$(shell pwd)"/data/${SUBMISSION_TRACK},target=/code_execution/data,readonly \
 		--mount type=bind,source="$(shell pwd)"/submission,target=/code_execution/submission \
 		--shm-size 8g \
