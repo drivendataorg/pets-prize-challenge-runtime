@@ -2,8 +2,6 @@ name: condaenv
 channels:
   - conda-forge
 dependencies:
-  - cudatoolkit=11.0
-  - cudnn=8.4
   - keras=2.10.0
   - loguru=0.6.0
   - mkl=2022.1.0
@@ -17,7 +15,7 @@ dependencies:
   - pytorch-lightning=1.7.6
   - scikit-learn=1.1.2
   - scipy=1.9.1
+  - tensorflow-gpu=2.10.0
   - tqdm=4.64.1
   - pip:
       - flwr[simulation]==1.1.0
-      - tensorflow-gpu==2.10.0
