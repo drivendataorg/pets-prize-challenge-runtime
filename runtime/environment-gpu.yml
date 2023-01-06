@@ -30,5 +30,6 @@ dependencies:
   - xgboost=1.7.1
   - pip:
       - flwr[simulation]==1.1.0
+      - gower==0.1.2
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
