@@ -17,5 +17,11 @@ dependencies:
   - scipy=1.9.1
   - tensorflow-gpu=2.10.0
   - tqdm=4.64.1
+  - imbalanced-learn==0.10.0
+  - matplotlib==3.6.2
+  - opacus==1.2.0
+  - sdmetrics==0.8.1
+  - seaborn==0.12.1
   - pip:
       - flwr[simulation]==1.1.0
+      - gower==0.1.2
