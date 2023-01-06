@@ -31,5 +31,6 @@ dependencies:
   - pip:
       - flwr[simulation]==1.1.0
       - gower==0.1.2
+      - interpret=0.3.0
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
