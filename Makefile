@@ -46,6 +46,7 @@ endif
 
 # Give write access to the submission folder to everyone so Docker user can write when mounted
 _submission_write_perms:
+	mkdir -p submission/
 	chmod -R 0777 submission/
 
 # ================================================================================================
