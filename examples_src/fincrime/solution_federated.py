@@ -122,6 +122,14 @@ class TrainingBankClient(fl.client.NumPyClient):
             # Join ordering account flags
             logger.info(f"{self.cid} : Joining bank flags to SWIFT labels...")
             swift_df = join_flags_to_swift_data(swift_df, self.bank_df)
+            if swift_df.shape[0] == 0:
+                # It may be the case that there are no rows, because this bank
+                # doesn't contain any beneficiary accounts
+                logger.info(
+                    f"{self.cid} : This partition has no receiving accounts. "
+                    "Skipping model fitting."
+                )
+                return [], 0, {}
             # Fit model
             logger.info(f"{self.cid} : Fitting model...")
             X = swift_df[["BeneficiaryFlags"]]
@@ -333,8 +341,6 @@ class TestBankClient(fl.client.NumPyClient):
             return [self.bank_df["Bank"].unique().astype("U")], 0, {}
         ## Round 2: Load NB model, predict on data
         elif config["round"] == 2:
-            logger.info(f"{self.cid} : Loading model...")
-            model = BankModel.load(self.client_dir / "model.joblib")
             logger.info(f"{self.cid} : Received SWIFT transactions...")
             # parameters contains account data from SWIFT, reform into dataframe
             swift_index, swift_transactions = parameters
@@ -344,6 +350,17 @@ class TestBankClient(fl.client.NumPyClient):
             # Join ordering account flags
             logger.info(f"{self.cid} : Joining bank flags to SWIFT transactions...")
             swift_df = join_flags_to_swift_data(swift_df, self.bank_df)
+            if swift_df.shape[0] == 0:
+                # It may be the case that there are no rows, because this bank
+                # doesn't contain any beneficiary accounts
+                logger.info(
+                    f"{self.cid} : This partition has no receiving accounts. "
+                    "Returning empty values."
+                )
+                return [[], []], 0, {}
+            # Load model
+            logger.info(f"{self.cid} : Loading model...")
+            model = BankModel.load(self.client_dir / "model.joblib")
             # Run predict
             logger.info(f"{self.cid} : Predicting...")
             X = swift_df[["BeneficiaryFlags"]]
