@@ -35,3 +35,4 @@ dependencies:
       - interpret==0.3.0
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
+      - pycryptodome==3.16.0
