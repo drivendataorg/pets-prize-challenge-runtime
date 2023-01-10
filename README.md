@@ -152,8 +152,6 @@ Let's walk through what you'll need to do, step-by-step.
 
 3. **Download the official challenge Docker image:**
 
-    **Not yet available.**
-
     ```bash
     make pull
     ```
