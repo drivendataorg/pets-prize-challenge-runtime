@@ -8,8 +8,10 @@ dependencies:
   - imbalanced-learn=0.10.0
   - jax=0.3.20
   - keras=2.10.0
+  - lightgbm=3.1.1
   - loguru=0.6.0
   - mkl=2022.1.0
+  - networkx=2.8.8
   - numba=0.56.2
   - numpy=1.23.3
   - opacus=1.2.0
