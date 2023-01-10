@@ -1,2 +1,6 @@
+cmake
+g++
+gcc
+git
 sysstat
 tree
