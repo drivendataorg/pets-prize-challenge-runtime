@@ -29,6 +29,7 @@ dependencies:
   - tqdm=4.64.1
   - xgboost=1.7.1
   - networkx=2.8.8
+  - lightgbm=3.1.1
   - pip:
       - flwr[simulation]==1.1.0
       - gower==0.1.2
