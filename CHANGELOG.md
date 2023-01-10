@@ -1,5 +1,9 @@
 # Changelog
 
+## 20202-01-06
+
+- Updated README with information about the `predictions_format.csv` files.
+
 ## 2022-01-04
 
 - Fixed CUDA issues in the GPU-based image.
