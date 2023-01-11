@@ -41,6 +41,23 @@ RUN echo "Installing base packages..." \
     && xargs -a /home/${RUNTIME_USER}/apt.txt apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /home/${RUNTIME_USER}/apt.txt
+
+
+ENV APT_INSTALL="apt-get install -y --no-install-recommends"
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive $APT_INSTALL gnupg2 && \
+    cd /tmp && wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB && \
+    apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB && \
+    sh -c 'echo deb https://apt.repos.intel.com/mkl all main > /etc/apt/sources.list.d/intel-mkl.list' && \
+    apt-get update && DEBIAN_FRONTEND=noninteractive $APT_INSTALL intel-mkl-64bit-2020.4-912
+
+
+# Runtime dependencies for the project
+ENV LD_LIBRARY_PATH="/opt/intel/mkl/lib/intel64/:$LD_LIBRARY_PATH"
+ENV MKLROOT="/opt/intel/mkl"
+ENV KENLM_ROOT=/opt/kenlm
+
+
+
 # ======================================================
 
 # ======================== user ========================
