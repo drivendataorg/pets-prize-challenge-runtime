@@ -59,3 +59,4 @@ dependencies:
       - imblearn==0.0
       - gensim==3.8.3
       - tensorboard-logger==0.1.0
+      - futures==2.1.6
