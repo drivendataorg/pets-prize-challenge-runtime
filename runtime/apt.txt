@@ -1,3 +1,7 @@
+cmake
+g++
+gcc
+git
 gnupg2
 sysstat
 tree
