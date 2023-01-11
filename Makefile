@@ -4,6 +4,17 @@
 # Settings
 # ================================================================================================
 
+# Set variable SUBMISSION_TRACK=fincrime or pandemic
+SUBMISSION_TRACK=fincrime
+
+# Set variable SUBMISSION_TYPE=centralized or federated
+SUBMISSION_TYPE=centralized
+
+
+
+
+
+
 ifeq (, $(shell which nvidia-smi))
 CPU_OR_GPU ?= cpu
 else
