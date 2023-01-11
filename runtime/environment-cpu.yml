@@ -4,6 +4,7 @@ channels:
 dependencies:
   - cryptography=38.0.4
   - dm-haiku=0.0.8
+  - functorch=0.2.1
   - graph-tool=2.45
   - imbalanced-learn=0.10.0
   - jax=0.3.20
