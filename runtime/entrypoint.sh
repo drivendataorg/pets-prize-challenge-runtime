@@ -27,8 +27,8 @@ monitor () {
     # monitor gpu usage
     if command -v nvidia-smi &> /dev/null
        then
-	   nvidia-smi pmon -d 1 -s u -o DT -f gpu_metrics.log >/dev/null 2>&1 &
-	   NVIDIASMI_PID=$!
+       nvidia-smi pmon -d 1 -s u -o DT -f gpu_metrics.log >/dev/null 2>&1 &
+       NVIDIASMI_PID=$!
     fi
 
     wait $PID
@@ -36,28 +36,31 @@ monitor () {
 
     if [[ -v NVIDIASMI_PID ]]
        then
-	   kill -s TERM $NVIDIASMI_PID || true
+       kill -s TERM $NVIDIASMI_PID || true
     fi
 }
 
 main () {
     submission_type=$1
 
+    echo SUBMISSION_TRACK=$SUBMISSION_TRACK
+    echo SUBMISSION_TYPE=$submission_type
+
     if [ $submission_type = centralized ]; then
-	expected_filename=solution_centralized.py
+        expected_filename=solution_centralized.py
     elif [ $submission_type = federated ]; then
-	expected_filename=solution_federated.py
+        expected_filename=solution_federated.py
     else
-	echo "Must provide a single argument with value centralized of federated."
-	exit 1
+        echo "Must provide a single argument with value centralized of federated."
+        exit 1
     fi
 
     cd /code_execution
 
     submission_files=$(zip -sf ./submission/submission.zip)
     if ! grep -q ${expected_filename}<<<$submission_files; then
-	echo "Submission zip archive must include $expected_filename"
-	return 1
+        echo "Submission zip archive must include $expected_filename"
+    return 1
     fi
 
     echo Installed packages
@@ -69,6 +72,12 @@ main () {
     unzip ./submission/submission.zip -d ./src
 
     tree ./src
+
+    if [[ -f ./src/install.sh ]]; then
+        echo "================ INSTALL.SH FOUND ================"
+        source ./src/install.sh
+        echo "================ END INSTALL.SH ================"
+    fi
 
     if [[ $submission_type = centralized ]]; then
         echo "================ START CENTRALIZED TRAIN ================"
