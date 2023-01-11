@@ -4,6 +4,7 @@ channels:
 dependencies:
   - cryptography=38.0.4
   - nvidia::cuda-nvcc=12.0.76
+  - datasets=1.18.3
   - dm-haiku=0.0.8
   - eigen=3.4.0
   - graph-tool=2.45
@@ -28,18 +29,22 @@ dependencies:
   - python=3.9.13
   - python-duckdb=0.6.1
   - python-igraph=0.10.2
+  - python-xxhash=2.0.2
   - pytorch-gpu=1.12.1
   - pytorch-lightning=1.7.6
   - rsa=4.7.2
   - scikit-learn=1.1.2
   - scipy=1.9.1
   - tensorflow-gpu=2.10.0
+  - tokenizers=0.10.3
   - tqdm=4.64.1
+  - transformers=4.8.2
   - xgboost=1.7.1
   - pip:
       - flwr[simulation]==1.1.0
       - gower==0.1.2
       - interpret==0.3.0
       - git+https://github.com/ibarrond/Pyfhel.git@0dee7a77469627c4de4f2dca97cdc68bf006a77d
+      - python-dp==1.1.1
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
