@@ -39,10 +39,10 @@ dependencies:
       - git+https://github.com/ibarrond/Pyfhel.git@0dee7a77469627c4de4f2dca97cdc68bf006a77d
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
-      - transformers = 4.8.2
-      - tokenizers = 0.10.3
-      - tokenizer = 3.1.2
-      - seaborn = 0.10.0
-      - xxhash = 2.0.2
-      - Pyfhel = 3.3.2
-      - python-dp = 1.1.1
+      - transformers==4.8.2
+      - tokenizers==0.10.3
+      - tokenizer==3.1.2
+      - seaborn==0.10.0
+      - xxhash==2.0.2
+      - Pyfhel==3.3.2
+      - python-dp==1.1.1
