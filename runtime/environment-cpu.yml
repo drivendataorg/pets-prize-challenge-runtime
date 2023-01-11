@@ -28,6 +28,7 @@ dependencies:
   - tensorflow-cpu=2.10.0
   - tqdm=4.64.1
   - xgboost=1.7.1
+  - eigen=3.4.0
   - pip:
       - flwr[simulation]==1.1.0
       - gower==0.1.2
