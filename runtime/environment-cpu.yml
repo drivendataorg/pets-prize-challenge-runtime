@@ -39,3 +39,4 @@ dependencies:
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
       - duckdb==0.6.1
+      - ninja
