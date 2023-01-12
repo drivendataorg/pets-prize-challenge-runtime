@@ -32,6 +32,7 @@ dependencies:
   - tensorflow-gpu=2.10.0
   - tqdm=4.64.1
   - xgboost=1.7.1
+  - torchmetrics=0.11.0
   - pip:
       - flwr[simulation]==1.1.0
       - gower==0.1.2
@@ -39,4 +40,3 @@ dependencies:
       - git+https://github.com/ibarrond/Pyfhel.git@0dee7a77469627c4de4f2dca97cdc68bf006a77d
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
-      - torchmetrics==0.11.0
