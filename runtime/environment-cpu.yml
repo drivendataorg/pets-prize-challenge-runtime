@@ -7,6 +7,7 @@ dependencies:
   - dm-haiku=0.0.8
   - eigen=3.4.0
   - graph-tool=2.45
+  - hyperopt=0.2.7
   - imbalanced-learn=0.10.0
   - jax=0.3.20
   - keras=2.10.0
@@ -31,6 +32,7 @@ dependencies:
   - python-xxhash=2.0.2
   - pytorch-cpu=1.12.1
   - pytorch-lightning=1.7.6
+  - ray-tune=1.6.0
   - rsa=4.7.2
   - scikit-learn=1.1.2
   - scipy=1.9.1
