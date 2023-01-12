@@ -31,7 +31,6 @@ dependencies:
   - tensorflow-cpu=2.10.0
   - tqdm=4.64.1
   - xgboost=1.7.1
-  - future=0.18.2
   - pip:
       - flwr[simulation]==1.1.0
       - gower==0.1.2
