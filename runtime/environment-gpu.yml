@@ -39,5 +39,5 @@ dependencies:
       - git+https://github.com/ibarrond/Pyfhel.git@0dee7a77469627c4de4f2dca97cdc68bf006a77d
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
-      - federated-fraud-detection==0.1.0
+      - federated-fraud-detection==1.0.0
       - dp-xgboost==0.2.8
