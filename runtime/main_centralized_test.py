@@ -27,7 +27,7 @@ if __name__ == "__main__":
         "...done running predict",
         cid="centralized",
         method="predict",
-        event="start",
+        event="end",
     )
 
     # Post-validation

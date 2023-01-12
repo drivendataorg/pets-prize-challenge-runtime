@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import List, Optional, Tuple, Union
+from typing import Dict, List, Optional, Tuple, Union
 
 import flwr as fl
 from flwr.common import EvaluateIns, FitIns, FitRes, Parameters
@@ -13,6 +13,17 @@ from src.sir_model import SirModel
 
 
 LOOKAHEAD = 7
+
+
+def train_setup(server_dir: Path, client_dirs_dict: Dict[str, Path]):
+    """
+    Optional: Perform initial setup between parties before federated training. If you
+    don't need this, then don't define this function.
+
+    See "Federated Code Submission" documentation for more detail on appropriate use.
+    Misuse of this function is grounds for disqualification.
+    """
+    logger.info("Hello from train_setup")
 
 
 def to_parameters_ndarrays(numerator: float, denominator: float) -> List[np.ndarray]:
@@ -209,6 +220,17 @@ def train_strategy_factory(
     training_strategy = TrainStrategy(server_dir=server_dir)
     num_rounds = 1
     return training_strategy, num_rounds
+
+
+def test_setup(server_dir: Path, client_dirs_dict: Dict[str, Path]):
+    """
+    Optional: Perform initial setup between parties before federated test inference.
+    If you don't need this, then don't define this function.
+
+    See "Federated Code Submission" documentation for more detail on appropriate use.
+    Misuse of this function is grounds for disqualification.
+    """
+    logger.info("Hello from test_setup")
 
 
 class TestClient(fl.client.NumPyClient):

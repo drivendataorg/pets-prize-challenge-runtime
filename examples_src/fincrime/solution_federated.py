@@ -22,14 +22,6 @@ def empty_parameters() -> Parameters:
     return fl.common.ndarrays_to_parameters([])
 
 
-# TRAIN PROCEDURE:
-# round 1:
-#   - SWIFT client fits on SWIFT data; SWIFT client sends labels for banks to Strategy
-#   - Bank clients tell Strategy which banks are present in each partition
-# round 2:
-#   - Strategy sends labels to banks; banks join flag data and fit
-
-
 def swift_df_to_ndarrays(
     swift_df: pd.DataFrame, labels: bool = True
 ) -> List[np.ndarray]:
@@ -69,6 +61,25 @@ def ndarrays_to_swift_df(
         index=pd.Series(swift_index, name="MessageId"),
         columns=cols,
     )
+
+
+# TRAIN PROCEDURE:
+# round 1:
+#   - SWIFT client fits on SWIFT data; SWIFT client sends labels for banks to Strategy
+#   - Bank clients tell Strategy which banks are present in each partition
+# round 2:
+#   - Strategy sends labels to banks; banks join flag data and fit
+
+
+def train_setup(server_dir: Path, client_dirs_dict: Dict[str, Path]):
+    """
+    Optional: Perform initial setup between parties before federated training. If you
+    don't need this, then don't define this function.
+
+    See "Federated Code Submission" documentation for more detail on appropriate use.
+    Misuse of this function is grounds for disqualification.
+    """
+    logger.info("Hello from train_setup")
 
 
 class TrainingSwiftClient(fl.client.NumPyClient):
@@ -255,6 +266,17 @@ def train_strategy_factory(server_dir: Path):
 #   - Strategy sends accounts to Banks; Banks predict and send predictions back
 # round 3:
 #   - Strategy sends Bank predictions to SWIFT. SWIFT predicts and combines.
+
+
+def test_setup(server_dir: Path, client_dirs_dict: Dict[str, Path]):
+    """
+    Perform initial setup between parties before federated test inference. If you
+    don't need this, then don't define this function.
+
+    See "Federated Code Submission" documentation for more detail on appropriate use.
+    Misuse of this function is grounds for disqualification.
+    """
+    logger.info("Hello from test_setup")
 
 
 def test_client_factory(
