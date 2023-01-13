@@ -7,6 +7,8 @@ dependencies:
   - dm-haiku=0.0.8
   - functorch=0.2.1
   - eigen=3.4.0
+  - fuzzywuzzy=0.18.0
+  - gensim=3.8.3
   - graph-tool=2.45
   - hyperopt=0.2.7
   - imbalanced-learn=0.10.0
@@ -16,6 +18,7 @@ dependencies:
   - loguru=0.6.0
   - mkl=2022.1.0
   - mmh3=3.0.0
+  - nltk=3.8.1
   - networkx=2.8.8
   - numba=0.56.2
   - numpy=1.23.3
@@ -48,6 +51,7 @@ dependencies:
       - gower==0.1.2
       - interpret==0.3.0
       - git+https://github.com/ibarrond/Pyfhel.git@0dee7a77469627c4de4f2dca97cdc68bf006a77d
+      - py-polar-codes==1.2.2
       - python-dp==1.1.1
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
