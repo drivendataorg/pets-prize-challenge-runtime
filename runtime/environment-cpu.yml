@@ -5,6 +5,7 @@ dependencies:
   - cryptography=38.0.4
   - datasets=1.18.3
   - dm-haiku=0.0.8
+  - functorch=0.2.1
   - eigen=3.4.0
   - graph-tool=2.45
   - hyperopt=0.2.7
