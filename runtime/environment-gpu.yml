@@ -6,7 +6,10 @@ dependencies:
   - nvidia::cuda-nvcc=12.0.76
   - datasets=1.18.3
   - dm-haiku=0.0.8
+  - functorch=0.2.1
   - eigen=3.4.0
+  - fuzzywuzzy=0.18.0
+  - gensim=3.8.3
   - graph-tool=2.45
   - hyperopt=0.2.7
   - imbalanced-learn=0.10.0
@@ -17,6 +20,7 @@ dependencies:
   - mkl=2022.1.0
   - mmh3=3.0.0
   - networkx=2.8.8
+  - nltk=3.8.1
   - numba=0.56.2
   - numpy=1.23.3
   - opacus=1.2.0
@@ -39,15 +43,16 @@ dependencies:
   - scipy=1.9.1
   - tensorflow-gpu=2.10.0
   - tokenizers=0.10.3
+  - torchmetrics=0.11.0
   - tqdm=4.64.1
   - transformers=4.8.2
   - xgboost=1.7.1
-  - torchmetrics=0.11.0
   - pip:
       - flwr[simulation]==1.1.0
       - gower==0.1.2
       - interpret==0.3.0
       - git+https://github.com/ibarrond/Pyfhel.git@0dee7a77469627c4de4f2dca97cdc68bf006a77d
+      - py-polar-codes==1.2.2
       - python-dp==1.1.1
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
