@@ -38,7 +38,6 @@ dependencies:
   - xgboost=1.7.1
   - pip:
       - apsw==3.9.2.post1
-      - beautifultable==1.0.0
       - flwr[simulation]==1.1.0
       - gmpy2==2.1.5
       - gower==0.1.2
