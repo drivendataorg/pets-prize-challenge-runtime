@@ -55,3 +55,4 @@ dependencies:
       - python-dp==1.1.1
       - tensorflow_privacy==0.7.3
       - tensorflow-probability==0.15.0
+      - deepwalk==1.0.3
