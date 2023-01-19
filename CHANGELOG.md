@@ -1,5 +1,9 @@
 # Changelog
 
+## 2022-01-18
+
+- Fixed a bug where the GPU was not available to clients during the federated simulation.
+
 ## 2022-01-11
 
 - Added ability to run optional `install.sh` script before evaluation.
