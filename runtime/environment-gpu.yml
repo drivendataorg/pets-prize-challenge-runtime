@@ -13,7 +13,7 @@ dependencies:
   - eigen=3.4.0
   - fuzzywuzzy=0.18.0
   - gensim=3.8.3
-  - gmpy2=2.1.5
+  - gmpy2=2.1.2
   - graph-tool=2.45
   - hyperopt=0.2.7
   - imbalanced-learn=0.10.0
@@ -33,7 +33,7 @@ dependencies:
   - peewee=3.10.0
   - pip=22.2.2
   - phe=1.5.0
-  - protobuf=3.19.6
+  - protobuf=3.20.2
   - pycryptodome=3.16.0
   - pycryptodomex=3.16.0
   - pynacl=1.5.0
