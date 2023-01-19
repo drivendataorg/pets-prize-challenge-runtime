@@ -60,7 +60,7 @@ dependencies:
       - gower==0.1.2
       - interpret==0.3.0
       - peewee==3.10.0
-      - protobuf==3.19.6
+      - protobuf==3.20.3
       - git+https://github.com/ibarrond/Pyfhel.git@0dee7a77469627c4de4f2dca97cdc68bf006a77d
       - py-polar-codes==1.2.2
       - python-dp==1.1.1
