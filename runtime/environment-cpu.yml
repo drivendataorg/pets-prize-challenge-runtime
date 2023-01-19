@@ -2,6 +2,8 @@ name: condaenv
 channels:
   - conda-forge
 dependencies:
+  - cachetools=5.2.1
+  - cloudpickle=2.1.0
   - cryptography=38.0.4
   - datasets=1.18.3
   - dm-haiku=0.0.8
