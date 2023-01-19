@@ -4,7 +4,7 @@ channels:
 dependencies:
   # - cachetools=5.2.1
   # - cloudpickle=2.1.0
-  - cryptography=38.0.4-py39
+  - cryptography=38.0.4=py39
   - nvidia::cuda-nvcc=12.0.76
   - datasets=1.18.3
   - dm-haiku=0.0.8
