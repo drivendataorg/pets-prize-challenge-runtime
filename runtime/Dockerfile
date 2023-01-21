@@ -1,6 +1,6 @@
 FROM nvidia/cuda:11.0.3-base-ubuntu20.04
-# adapated from build file for pangeo images
-# https://github.com/pangeo-data/pangeo-docker-images
+# This CUDA version does not matter
+# We will separately install the CUDA runtime via cudatoolkit using conda
 
 ARG CPU_OR_GPU=gpu
 
