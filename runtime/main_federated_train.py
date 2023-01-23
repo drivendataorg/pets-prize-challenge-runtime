@@ -73,12 +73,15 @@ if __name__ == "__main__":
     )
     server_config = fl.server.ServerConfig(num_rounds=num_rounds)
 
-    # start simulation
+    # Set CPUs more than half of available to prevent multiple clients from running
+    # concurrently. Only used for scheduling—will not limit actual CPU usage.
     client_resources = {
-        "num_cpus": os.cpu_count() - 1,
+        "num_cpus": int(os.cpu_count() / 2) + 1,
     }
     if os.getenv("CPU_OR_GPU", "") == "gpu":
         client_resources["num_gpus"] = 1
+
+    # start simulation
     fl.simulation.start_simulation(
         client_fn=wrapped_client_factory,
         clients_ids=supervisor.get_client_ids(),
